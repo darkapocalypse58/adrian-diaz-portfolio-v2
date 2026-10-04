@@ -87,7 +87,8 @@ function useHorizontalJourney(trackRef) {
 }
 
 function Stage({ id, eyebrow, title, children, className = '' }) {
-  return <section id={id} className={`stage ${className}`}><div className="stage-inner"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{children}</div></section>;
+  const cleanEyebrow = eyebrow.replace(/^\d+\s*\/\s*/, '');
+  return <section id={id} className={`stage ${className}`}><div className="stage-inner"><p className="eyebrow">{cleanEyebrow}</p><h2>{title}</h2>{children}</div></section>;
 }
 
 function TypewriterHeadline({ active }) {
