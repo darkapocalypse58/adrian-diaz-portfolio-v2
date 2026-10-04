@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, useCallback, useEffect, useRef, useState } from 'react';
 
 const projects = [
   { number: '01', type: 'AUTOMATED PUBLISHING', name: 'Technomalist', description: 'An automated technology newsroom built around discovery, classification, editorial review, and reliable publishing.', stack: 'Next.js · Node.js · Supabase · Cloudflare', tone: 'gold', image: '/project-technomalist.png', imageType: 'logo' },
@@ -18,6 +18,21 @@ const experiences = [
 ];
 
 const stages = ['Intro', 'Profile', 'Skills', 'Experience', 'Automation', 'Work', 'Contact'];
+const careerStartYear = 2019;
+const experienceYears = Math.max(0, new Date().getFullYear() - careerStartYear);
+
+function withCurrentExperience(node) {
+  if (typeof node === 'string') {
+    return node
+      .replace(/six years/gi, `${experienceYears} years`)
+      .replace(/6\+/g, `${experienceYears}+`);
+  }
+  if (Array.isArray(node)) return node.map(withCurrentExperience);
+  if (React.isValidElement(node) && node.props.children) {
+    return cloneElement(node, node.props, withCurrentExperience(node.props.children));
+  }
+  return node;
+}
 
 function useHorizontalJourney(trackRef) {
   const current = useRef(0);
@@ -88,7 +103,7 @@ function useHorizontalJourney(trackRef) {
 
 function Stage({ id, eyebrow, title, children, className = '' }) {
   const cleanEyebrow = eyebrow.replace(/^\d+\s*\/\s*/, '');
-  return <section id={id} className={`stage ${className}`}><div className="stage-inner"><p className="eyebrow">{cleanEyebrow}</p><h2>{title}</h2>{children}</div></section>;
+  return <section id={id} className={`stage ${className}`}><div className="stage-inner"><p className="eyebrow">{cleanEyebrow}</p><h2>{withCurrentExperience(title)}</h2>{withCurrentExperience(children)}</div></section>;
 }
 
 function TypewriterHeadline({ active }) {
