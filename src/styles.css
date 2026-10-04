@@ -22,7 +22,7 @@
 
 /* System Console hero */
 .console-hero .stage-inner{width:min(1320px,90vw)}
-.console-hero h2{font-size:clamp(64px,7.4vw,118px);line-height:.84;margin:22px 0 26px;max-width:720px}
+.console-hero h2{font-size:clamp(50px,5.6vw,88px);line-height:.9;margin:22px 0 26px;max-width:760px}
 .console-hero .hero-layout{grid-template-columns:minmax(0,1.05fr) minmax(430px,.95fr);gap:6vw;align-items:center}
 .console-hero .lead{max-width:650px;font-size:18px}
 .hero-actions{display:flex;align-items:center;gap:14px}

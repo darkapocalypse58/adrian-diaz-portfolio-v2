@@ -92,7 +92,7 @@ function Stage({ id, eyebrow, title, children, className = '' }) {
 }
 
 function TypewriterHeadline({ active }) {
-  const lines = ['Build.', 'Connect.', 'Automate.'];
+  const lines = ['Websites that work.', 'Systems that help.', 'Built with care.'];
   const fullText = lines.join('\n');
   const [visibleLength, setVisibleLength] = useState(0);
 
@@ -120,7 +120,7 @@ function TypewriterHeadline({ active }) {
   const [typedFirst = '', typedSecond = '', typedThird = ''] = visibleText.split('\n');
 
   return <span className="typewriter" aria-label={lines.join(' ')}>
-    <span className="typewriter-measure" aria-hidden="true">Build.<br/><em>Connect.</em><br/>Automate.</span>
+    <span className="typewriter-measure" aria-hidden="true">Websites that work.<br/><em>Systems that help.</em><br/>Built with care.</span>
     <span className="typewriter-output" aria-hidden="true">{typedFirst}{visibleText.includes('\n') && <br/>}<em>{typedSecond}</em>{visibleText.split('\n').length > 2 && <br/>}{typedThird}<i className={visibleLength >= fullText.length ? 'is-finished' : ''}/></span>
   </span>;
 }
