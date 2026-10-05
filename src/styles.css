@@ -45,3 +45,21 @@
 @keyframes console-scan{to{transform:translateY(700px)}}
 @keyframes console-online{50%{opacity:.45}}
 @media(max-width:1100px){.capability-console{margin-top:-100px}}@media(max-width:900px){.console-hero .hero-layout{grid-template-columns:1fr}.capability-console{display:none}.console-hero h2{font-size:clamp(54px,14vw,82px)}}
+.work-stage .stage-inner{position:relative;width:min(1460px,92vw)}
+.work-stage h2{font-size:clamp(38px,4vw,64px);line-height:.94;margin:12px 0 18px}
+.work-stage h2 em{color:var(--gold);font-style:normal}
+.work-heading-note{position:absolute;right:0;top:54px;width:min(360px,31vw);color:#92958f;font-size:15px;line-height:1.55}
+.main-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.main-work-card{position:relative;height:min(27vh,240px);min-height:190px;overflow:hidden;border:1px solid #292c28;border-radius:22px;background:#0d0f0d;color:#f4f1e9;text-decoration:none;box-shadow:0 22px 60px rgba(0,0,0,.2);isolation:isolate;transition:transform .32s ease,border-color .32s ease}
+.main-work-card:hover,.main-work-card:focus-visible{transform:translateY(-4px);border-color:#6e5a17;outline:0}
+.main-work-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.main-work-card:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,transparent 45%,rgba(5,7,5,.82))}
+.main-work-card:hover>img,.main-work-card:focus-visible>img{transform:scale(1.035);filter:brightness(.43)}
+.main-work-label{position:absolute;z-index:2;left:20px;right:20px;bottom:15px;display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:9px;transition:opacity .28s ease,transform .28s ease}
+.main-work-label small{color:var(--gold);font:500 9px monospace}.main-work-label strong{font:600 20px 'Manrope';letter-spacing:-.03em}.main-work-label span{color:#8c8f89;font:500 8px monospace;letter-spacing:.08em;text-transform:uppercase}
+.main-work-card:hover .main-work-label,.main-work-card:focus-visible .main-work-label{opacity:0;transform:translateY(10px)}
+.main-work-overlay{position:absolute;z-index:3;inset:0;padding:22px 25px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(110deg,rgba(7,9,7,.98),rgba(9,11,9,.88));opacity:0;transform:translateY(15px);transition:opacity .32s ease,transform .32s ease}
+.main-work-card:hover .main-work-overlay,.main-work-card:focus-visible .main-work-overlay{opacity:1;transform:none}
+.main-work-overlay small{color:var(--gold);font:600 9px monospace;letter-spacing:.1em}.main-work-overlay h3{margin:7px 0 5px;font:600 28px 'Manrope';letter-spacing:-.04em}.main-work-overlay p{max-width:520px;margin:0 0 11px;color:#a4a7a1;font-size:12px;line-height:1.5}.main-work-overlay footer{position:static;inset:auto;display:block;color:#797c76;font:500 8px monospace;letter-spacing:.07em;text-transform:uppercase}.main-work-overlay b{position:absolute;right:23px;bottom:20px;color:var(--gold);font:600 9px monospace;text-transform:uppercase}
+@media(max-width:760px){.work-stage .stage-inner{width:100%}.work-heading-note{position:static;width:auto;margin:-5px 0 13px;font-size:12px}.main-work-grid{grid-template-columns:1fr;gap:9px}.main-work-card{height:155px;min-height:155px;border-radius:16px}.main-work-grid .main-work-card:nth-child(n+4){display:none}.main-work-label strong{font-size:17px}.main-work-overlay{padding:16px 18px}.main-work-overlay h3{font-size:22px}.main-work-overlay p{display:none}.main-work-overlay b{right:17px;bottom:15px}}
+@media(hover:none){.main-work-overlay{inset:auto 0 0;min-height:48%;justify-content:flex-end;opacity:1;transform:none;background:linear-gradient(transparent,rgba(6,8,6,.98) 30%)}.main-work-label{display:none}.main-work-overlay h3{font-size:19px}.main-work-overlay p,.main-work-overlay footer{display:none}}
