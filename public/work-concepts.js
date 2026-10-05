@@ -1,8 +1,8 @@
 const projects=[
   {n:'01',type:'Automated Publishing',name:'Technomalist',image:'/project-technomalist-homepage.png',url:'https://technomalist.com/',desc:'An automated technology newsroom built around discovery, classification, editorial review, and reliable publishing.',stack:'Next.js · Node.js · Supabase · Cloudflare'},
   {n:'02',type:'Digital Agency',name:'RV Multimedia',image:'/project-rv-homepage.png',focus:'center 49%',url:'https://rvmultimedia.com/',desc:'A focused agency experience connecting web development, brand, content, video, and business support.',stack:'WordPress · Strategy · Responsive Design'},
-  {n:'03',type:'Online Learning',name:'ImagineIF Institute',image:'/project-imagineif-widescreen.png',compact:true,url:'https://imagineifinstitute.com/',desc:'A connected learning platform for lessons, subscriptions, payments, cohorts, access, and analytics.',stack:'WordPress · Masteriyo · WooCommerce'},
-  {n:'04',type:'Professional Services',name:'Maddock Hawkins',image:'/project-maddock-widescreen.png',compact:true,url:'https://maddockhawkins.com/',desc:'A professional accountancy website shaped around services, trust, practical answers, and useful content.',stack:'WordPress · Divi · PHP · Content Design'}
+  {n:'03',type:'Online Learning',name:'ImagineIF Institute',image:'/project-imagineif-homepage-v2.png',compact:true,url:'https://imagineifinstitute.com/',desc:'A connected learning platform for lessons, subscriptions, payments, cohorts, access, and analytics.',stack:'WordPress · Masteriyo · WooCommerce'},
+  {n:'04',type:'Professional Services',name:'Maddock Hawkins',image:'/project-maddock-homepage-v2.png',compact:true,url:'https://maddockhawkins.com/',desc:'A professional accountancy website shaped around services, trust, practical answers, and useful content.',stack:'WordPress · Divi · PHP · Content Design'}
 ];
 const modes=['editorial','bento','rail','terminal','cinematic'];
 const labels=['Editorial Index','Bento System','Horizontal Rail','Terminal Archive','Cinematic Stack'];
