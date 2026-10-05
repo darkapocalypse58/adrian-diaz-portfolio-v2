@@ -24,6 +24,8 @@ const experienceYears = Math.max(0, new Date().getFullYear() - careerStartYear);
 function withCurrentExperience(node) {
   if (typeof node === 'string') {
     return node
+      .replace(/six years\. seven roles\./gi, 'Experience across platforms.')
+      .replace(/one evolving practice\./gi, 'Built through real work.')
       .replace(/six years/gi, `${experienceYears} years`)
       .replace(/6\+/g, `${experienceYears}+`);
   }
