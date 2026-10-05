@@ -3,8 +3,8 @@ import React, { cloneElement, useCallback, useEffect, useRef, useState } from 'r
 const projects = [
   { number: '01', type: 'AUTOMATED PUBLISHING', name: 'Technomalist', description: 'An automated technology newsroom built around discovery, classification, editorial review, and reliable publishing.', stack: 'Next.js · Node.js · Supabase · Cloudflare', tone: 'gold', image: '/project-technomalist.png', imageType: 'logo' },
   { number: '02', type: 'DIGITAL AGENCY', name: 'RV Multimedia', description: 'A focused agency experience connecting web development, brand, content, video, and business support.', stack: 'WordPress · Strategy · Responsive Design', tone: 'violet', image: '/project-rv.png', imageType: 'logo' },
-  { number: '03', type: 'ONLINE LEARNING', name: 'ImagineIF Institute', description: 'A connected learning platform for lessons, subscriptions, payments, cohorts, access, and analytics.', stack: 'WordPress · Masteriyo · WooCommerce', tone: 'coral', image: '/project-imagineif.png', imageType: 'showcase compact' },
-  { number: '04', type: 'PROFESSIONAL SERVICES', name: 'Maddock Hawkins', description: 'A professional accountancy website shaped around services, trust, practical answers, and useful content.', stack: 'WordPress · Divi · PHP · Content Design', tone: 'green', image: '/project-maddock.png', imageType: 'showcase compact' },
+  { number: '03', type: 'ONLINE LEARNING', name: 'ImagineIF Institute', description: 'A connected learning platform for lessons, subscriptions, payments, cohorts, access, and analytics.', stack: 'WordPress · Masteriyo · WooCommerce', tone: 'coral', image: '/project-imagineif.png', imageType: 'showcase' },
+  { number: '04', type: 'PROFESSIONAL SERVICES', name: 'Maddock Hawkins', description: 'A professional accountancy website shaped around services, trust, practical answers, and useful content.', stack: 'WordPress · Divi · PHP · Content Design', tone: 'green', image: '/project-maddock.png', imageType: 'showcase' },
 ];
 
 const experiences = [

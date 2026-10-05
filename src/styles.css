@@ -45,5 +45,3 @@
 @keyframes console-scan{to{transform:translateY(700px)}}
 @keyframes console-online{50%{opacity:.45}}
 @media(max-width:1100px){.capability-console{margin-top:-100px}}@media(max-width:900px){.console-hero .hero-layout{grid-template-columns:1fr}.capability-console{display:none}.console-hero h2{font-size:clamp(54px,14vw,82px)}}
-.project-mark.showcase.compact img{object-fit:contain;padding:10px;transform:scale(.84)}
-.project-card:hover .project-mark.showcase.compact img{transform:scale(.89)}
