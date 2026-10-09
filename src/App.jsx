@@ -144,7 +144,8 @@ function TypewriterHeadline({ active }) {
   const visibleText = fullText.slice(0, visibleLength);
   const [typedFirst = '', typedSecond = '', typedThird = ''] = visibleText.split('\n');
 
-  return <span className="typewriter" aria-label={lines.join(' ')}>
+  return <span className="typewriter">
+    <span className="sr-only">{lines.join(' ')}</span>
     <span className="typewriter-measure" aria-hidden="true">Websites that work.<br/><em>Systems that help.</em><br/>Built with care.</span>
     <span className="typewriter-output" aria-hidden="true">{typedFirst}{visibleText.includes('\n') && <br/>}<em>{typedSecond}</em>{visibleText.split('\n').length > 2 && <br/>}{typedThird}<i className={visibleLength >= fullText.length ? 'is-finished' : ''}/></span>
   </span>;
