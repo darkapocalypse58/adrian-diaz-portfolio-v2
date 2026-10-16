@@ -22,6 +22,11 @@
 .upwork-proof{display:flex;width:max-content;max-width:100%;flex-wrap:wrap;gap:8px;align-items:center;margin-top:18px;padding:10px 12px;border:1px solid #30342d;border-radius:15px;color:#c6c8c1;background:rgba(18,20,17,.76);font-size:11px;font-weight:600;text-decoration:none;transition:.25s ease}.upwork-proof:hover{border-color:#5a681f;background:rgba(26,30,20,.9);transform:translateY(-2px)}.upwork-proof span{display:inline-flex;gap:6px;align-items:center;white-space:nowrap}.upwork-proof span:before{content:'';width:6px;height:6px;border-radius:50%;background:#75b843;box-shadow:0 0 9px rgba(117,184,67,.72)}.upwork-proof span+span{padding-left:9px;border-left:1px solid #383c35}.upwork-contact-stage p{max-width:720px;color:#aaa;font-size:clamp(17px,1.6vw,23px);line-height:1.55}.upwork-contact-stage .cta{display:inline-flex;align-items:center;width:max-content;margin-top:12px;font-size:16px;border-bottom:0}.upwork-contact-stage .cta span{padding-left:24px}
 @media(max-width:760px){.upwork-proof{width:100%;gap:7px;font-size:9px}.upwork-proof span+span{padding-left:7px}.upwork-contact-stage p{font-size:14px}.upwork-contact-stage .cta{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.track{transition:none!important}}
+
+/* Crisp, consistent social brand icons */
+.quick-contact a svg{width:17px;height:17px;display:block}
+.social-directory a span{font:inherit}
+.social-directory a span svg{width:16px;height:16px;display:block}
 .typewriter{position:relative;display:grid}.typewriter-measure{grid-area:1/1;visibility:hidden}.typewriter-output{grid-area:1/1}.typewriter-output i{display:inline-block;width:.055em;height:.82em;margin-left:.08em;vertical-align:-.04em;background:var(--gold);box-shadow:0 0 16px rgba(245,189,23,.55);animation:typewriter-caret .75s steps(1,end) infinite}.typewriter-output i.is-finished{animation-iteration-count:5}@keyframes typewriter-caret{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.typewriter-measure{display:none}.typewriter-output i{display:none}}
 
 /* System Console hero */
