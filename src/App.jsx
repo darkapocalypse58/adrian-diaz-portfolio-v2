@@ -508,7 +508,7 @@ function App() {
           onClick={() => navigateTo(0)}
           aria-label="Home"
         >
-          <img src="/ad-logo.png" alt="Adrian Diaz" />
+          <img src="/ad-logo-v5-diagonal.png" alt="Adrian Diaz logo" />
         </button>
         <div className="nav-center">
           {stages.slice(1).map((label, index) => {
