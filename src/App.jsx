@@ -423,12 +423,70 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedExperience, setSelectedExperience] = useState(0);
   const [workPage, setWorkPage] = useState(0);
+  const [inquiry, setInquiry] = useState({
+    name: "",
+    email: "",
+    company: "",
+    projectType: "Website project",
+    message: "",
+  });
+  const [inquiryStatus, setInquiryStatus] = useState("");
+  const [inquiryStatusType, setInquiryStatusType] = useState("idle");
+  const [isInquirySending, setIsInquirySending] = useState(false);
   const workPageCount = Math.ceil(projects.length / projectsPerPage);
   const visibleProjects = projects.slice(
     workPage * projectsPerPage,
     (workPage + 1) * projectsPerPage,
   );
   const { progress, active, goTo } = useHorizontalJourney(trackRef);
+  const submitInquiry = async (event) => {
+    event.preventDefault();
+    if (isInquirySending) return;
+
+    const formData = new FormData(event.currentTarget);
+    setIsInquirySending(true);
+    setInquiryStatusType("sending");
+    setInquiryStatus("Sending your inquiry...");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "dd5620c1-0e17-4e7d-ad6a-f42831a9029d",
+          subject: `${inquiry.projectType} inquiry from ${inquiry.name}`,
+          from_name: "Ian Diaz Code Portfolio",
+          name: inquiry.name,
+          email: inquiry.email,
+          company: inquiry.company || "Not provided",
+          project_type: inquiry.projectType,
+          message: inquiry.message,
+          botcheck: formData.get("botcheck") || "",
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "The inquiry could not be sent.");
+      }
+
+      setInquiry({
+        name: "",
+        email: "",
+        company: "",
+        projectType: "Website project",
+        message: "",
+      });
+      setInquiryStatusType("success");
+      setInquiryStatus("Thanks. Your inquiry has been sent successfully.");
+    } catch (error) {
+      console.error("Inquiry submission failed:", error);
+      setInquiryStatusType("error");
+      setInquiryStatus("Something went wrong. Please try again in a moment.");
+    } finally {
+      setIsInquirySending(false);
+    }
+  };
   const navigateTo = useCallback(
     (index) => {
       if (window.matchMedia("(max-width: 900px)").matches) {
@@ -1046,26 +1104,110 @@ function App() {
             }
             className="contact-stage"
           >
-            <div className="contact-directory">
-              <a className="contact-email" href="mailto:hello@iandiazcode.com">
-                hello@iandiazcode.com ↗
-              </a>
-              <nav className="social-directory" aria-label="Social profiles">
-                {socialProfiles.map((profile) => (
-                  <a
-                    href={profile.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    key={profile.label}
-                  >
-                    <span>
-                      <SocialIcon profile={profile} />
-                    </span>
-                    {profile.label}
-                    <b>↗</b>
-                  </a>
-                ))}
-              </nav>
+            <div className="contact-grid">
+              <div className="contact-directory">
+                <p className="contact-kicker">A SIMPLE START</p>
+                <p className="contact-note">
+                  Tell me what you are building, improving, or trying to make
+                  easier. I will reply directly by email.
+                </p>
+                <ol className="contact-steps">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <strong>Share the basics</strong>
+                      <p>Tell me what you need and where you are now.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <strong>I review the fit</strong>
+                      <p>You will get a practical reply, not a generic pitch.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div>
+                      <strong>We plan the next step</strong>
+                      <p>If it is a match, we can talk through the right approach.</p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+              <form className="inquiry-form" onSubmit={submitInquiry}>
+                <label className="form-honeypot" aria-hidden="true">
+                  Leave this field blank
+                  <input name="botcheck" tabIndex="-1" autoComplete="off" />
+                </label>
+                <div className="inquiry-form-heading">
+                  <span>PROJECT INQUIRY</span>
+                  <small>Usually replies within one business day.</small>
+                </div>
+                <div className="inquiry-fields two-columns">
+                  <label>
+                    Your name
+                    <input
+                      required
+                      value={inquiry.name}
+                      onChange={(event) => setInquiry({ ...inquiry, name: event.target.value })}
+                      autoComplete="name"
+                    />
+                  </label>
+                  <label>
+                    Email address
+                    <input
+                      type="email"
+                      required
+                      value={inquiry.email}
+                      onChange={(event) => setInquiry({ ...inquiry, email: event.target.value })}
+                      autoComplete="email"
+                    />
+                  </label>
+                </div>
+                <div className="inquiry-fields two-columns">
+                  <label>
+                    Company <small>optional</small>
+                    <input
+                      value={inquiry.company}
+                      onChange={(event) => setInquiry({ ...inquiry, company: event.target.value })}
+                      autoComplete="organization"
+                    />
+                  </label>
+                  <label>
+                    What can I help with?
+                    <select
+                      value={inquiry.projectType}
+                      onChange={(event) => setInquiry({ ...inquiry, projectType: event.target.value })}
+                    >
+                      <option>Website project</option>
+                      <option>E-commerce or Shopify</option>
+                      <option>WordPress support</option>
+                      <option>Automation or integration</option>
+                      <option>SEO or site improvement</option>
+                      <option>Something else</option>
+                    </select>
+                  </label>
+                </div>
+                <label className="message-field">
+                  A little about the project
+                  <textarea
+                    required
+                    rows="4"
+                    value={inquiry.message}
+                    onChange={(event) => setInquiry({ ...inquiry, message: event.target.value })}
+                    placeholder="Goals, timeline, current site, or anything useful to know."
+                  />
+                </label>
+                <div className="inquiry-submit-row">
+                  <button className="inquiry-submit" type="submit" disabled={isInquirySending}>
+                    {isInquirySending ? "Sending..." : "Send inquiry"} <span>→</span>
+                  </button>
+                  <p className={`inquiry-status ${inquiryStatusType}`} role="status" aria-live="polite">
+                    {inquiryStatus || "Your details will be delivered securely by email."}
+                  </p>
+                </div>
+              </form>
             </div>
           </Stage>
         )}
