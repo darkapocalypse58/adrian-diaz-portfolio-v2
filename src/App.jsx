@@ -603,7 +603,7 @@ function App() {
               </p>
               <div className="hero-actions">
                 <button className="cta" onClick={() => navigateTo(5)}>
-                  Explore the work <span>→</span>
+                  Explore the work <i aria-hidden="true">→</i>
                 </button>
                 {!isUpwork && (
                   <button className="resume-cta" onClick={() => navigateTo(3)}>
