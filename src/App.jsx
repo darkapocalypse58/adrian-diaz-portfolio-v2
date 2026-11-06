@@ -310,6 +310,8 @@ function useHorizontalJourney(trackRef) {
       }, 170);
     };
     const onKey = (event) => {
+      if (window.matchMedia("(max-width: 900px)").matches ||
+          event.target.closest?.("input, textarea, select, [contenteditable='true']")) return;
       const directions = {
         ArrowRight: 1,
         PageDown: 1,
@@ -364,10 +366,15 @@ function TypewriterHeadline({ active }) {
     "Built with care.",
   ];
   const fullText = lines.join("\n");
-  const [visibleLength, setVisibleLength] = useState(0);
+  const showImmediately = window.matchMedia("(max-width: 900px), (prefers-reduced-motion: reduce)").matches;
+  const [visibleLength, setVisibleLength] = useState(() => showImmediately ? fullText.length : 0);
 
   useEffect(() => {
     if (!active) return undefined;
+    if (showImmediately) {
+      setVisibleLength(fullText.length);
+      return undefined;
+    }
     setVisibleLength(0);
     let timer;
     const startTimer = window.setTimeout(() => {
@@ -387,7 +394,7 @@ function TypewriterHeadline({ active }) {
       window.clearTimeout(startTimer);
       window.clearTimeout(timer);
     };
-  }, [active, fullText]);
+  }, [active, fullText, showImmediately]);
 
   const visibleText = fullText.slice(0, visibleLength);
   const [typedFirst = "", typedSecond = "", typedThird = ""] =
@@ -420,7 +427,7 @@ function App() {
   const stages = isUpwork ? upworkStages : defaultStages;
   const trackRef = useRef(null);
   const glowRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !window.matchMedia("(max-width: 900px), (prefers-reduced-motion: reduce)").matches);
   const [selectedExperience, setSelectedExperience] = useState(0);
   const [workPage, setWorkPage] = useState(0);
   const [inquiry, setInquiry] = useState({
@@ -501,11 +508,13 @@ function App() {
   );
 
   useEffect(() => {
+    if (!isLoading) return undefined;
     const loadingTimer = window.setTimeout(() => setIsLoading(false), 1900);
     return () => clearTimeout(loadingTimer);
-  }, []);
+  }, [isLoading]);
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return undefined;
     const pointer = { x: innerWidth * 0.5, y: innerHeight * 0.5 };
     const glow = { x: pointer.x, y: pointer.y };
     let animationFrame = 0;
@@ -1034,6 +1043,8 @@ function App() {
                 <img
                   src={project.image}
                   alt={`${project.name} homepage preview`}
+                  loading="lazy"
+                  decoding="async"
                   style={
                     project.imagePosition
                       ? { objectPosition: project.imagePosition }
