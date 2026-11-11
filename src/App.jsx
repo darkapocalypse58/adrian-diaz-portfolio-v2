@@ -12,7 +12,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { SiFiverr, SiUpwork } from "react-icons/si";
-import { TbMail, TbSparkles } from "react-icons/tb";
+import { TbBrain, TbCode, TbDatabase, TbMail, TbSettingsAutomation, TbShoppingBag, TbSparkles } from "react-icons/tb";
 
 const projects = [
   {
@@ -792,7 +792,7 @@ function App() {
           <div className="skills-board">
             <article>
               <header>
-                <span>&lt;/&gt;</span>
+                <span aria-hidden="true"><TbCode /></span>
                 <div>
                   <h3>Frontend & UI</h3>
                   <p>
@@ -820,7 +820,7 @@ function App() {
             </article>
             <article>
               <header>
-                <span>DB</span>
+                <span aria-hidden="true"><TbDatabase /></span>
                 <div>
                   <h3>Backend & Data</h3>
                   <p>
@@ -846,7 +846,7 @@ function App() {
             </article>
             <article>
               <header>
-                <span>CMS</span>
+                <span aria-hidden="true"><TbShoppingBag /></span>
                 <div>
                   <h3>CMS & Commerce</h3>
                   <p>
@@ -873,7 +873,7 @@ function App() {
             </article>
             <article>
               <header>
-                <span>OPS</span>
+                <span aria-hidden="true"><TbSettingsAutomation /></span>
                 <div>
                   <h3>Tools & Delivery</h3>
                   <p>
@@ -900,7 +900,7 @@ function App() {
             </article>
             <article className="ai-skills-card">
               <header>
-                <span>AI</span>
+                <span aria-hidden="true"><TbBrain /></span>
                 <div>
                   <h3>AI Systems & Automation</h3>
                   <p>Chatbots, AI training, and human-reviewed workflows.</p>
