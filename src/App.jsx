@@ -891,9 +891,30 @@ function App() {
                   "MainWP",
                   "WPMU DEV",
                   "SEO",
-                  "AI Integration",
                   "Discord.js",
                   "Troubleshooting",
+                ].map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </article>
+            <article className="ai-skills-card">
+              <header>
+                <span>AI</span>
+                <div>
+                  <h3>AI Systems & Automation</h3>
+                  <p>Chatbots, AI training, and human-reviewed workflows.</p>
+                </div>
+              </header>
+              <div className="skill-pills">
+                {[
+                  "AI Chatbot Development",
+                  "AI Training & Evaluation",
+                  "Prompt Engineering",
+                  "Knowledge Base Design",
+                  "AI Workflow Automation",
+                  "Human-in-the-Loop Review",
+                  "AI Response Testing",
                 ].map((item) => (
                   <span key={item}>{item}</span>
                 ))}
